@@ -11,11 +11,13 @@ import {StockManageComponent} from './stock/stock-manage/stock-manage.component'
 import {StarsComponent} from './stars/stars.component';
 import {RouterModule, Routes} from '@angular/router';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import { StockFormComponent } from './stock/stock-form/stock-form.component';
 
 const routeConfig: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'stock', component: StockManageComponent}
+  {path: 'stock', component: StockManageComponent},
+  {path: 'stock/:id', component: StockFormComponent}
 ];
 
 @NgModule({
@@ -29,6 +31,7 @@ const routeConfig: Routes = [
     StockManageComponent,
     StarsComponent,
     DashboardComponent,
+    StockFormComponent,
   ],
   imports: [
     BrowserModule,
