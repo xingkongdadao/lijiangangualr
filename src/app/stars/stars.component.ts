@@ -9,7 +9,10 @@ export class StarsComponent implements OnInit {
 
   @Input()
   rating = 0;
+
   stars: boolean[];
+  @Input()
+  read_only = true;
 
   constructor() {
   }
@@ -23,4 +26,14 @@ export class StarsComponent implements OnInit {
     // this.stars = [false, false, false, true, true];
   }
 
+  clickStar(index: number) {
+    if (!this.read_only) {
+      this.rating = index + 1;
+      this.stars = [];
+      for (let i = 1; i <= 5; i++) {
+        this.stars.push(i > this.rating);
+      }
+
+    }
+  }
 }
