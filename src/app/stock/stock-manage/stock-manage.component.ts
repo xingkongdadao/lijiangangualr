@@ -26,7 +26,7 @@ export class StockManageComponent implements OnInit {
   }
 
   create() {
-    this.router.navigateByUrl('/stock/0');
+    this.router.navigateByUrl('/stock/' + 0);
   }
 
   update(stock: Stock) {

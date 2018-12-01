@@ -23,9 +23,14 @@ export class StockFormComponent implements OnInit {
   ngOnInit() {
     this.stockId = this.routeInfo.snapshot.params['id'];
     this.stockId = Number(this.stockId);
-    console.log(this.stockId);
-    console.log(typeof this.stockId);
-    this.stock = this.stockService.getStockById(this.stockId);
+    if (this.stockId !== 0) {
+      console.log(this.stockId);
+      console.log(typeof this.stockId);
+      this.stock = this.stockService.getStockById(this.stockId);
+    } else {
+      this.stock = new Stock(0, '', 0, 0, '', []);
+
+    }
     console.log(this.stock);
 
     // 创建表单数据
@@ -62,6 +67,7 @@ export class StockFormComponent implements OnInit {
     this.formModel.value.categories = chineseCategories;
     this.formModel.value.rating = this.stock.rating;
     console.log(this.formModel.value);
+    console.log(this.formModel.hasError);
     // console.log(this.stock.rating);
     // this.router.navigateByUrl('/stock');
   }
