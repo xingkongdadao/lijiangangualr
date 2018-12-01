@@ -9,7 +9,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./stock-form.component.css']
 })
 export class StockFormComponent implements OnInit {
-  stock: Stock;
+  stock: Stock = new Stock(0, '', 0, 0, '', []);
   stockId: number;
   formModel: FormGroup;
   categories = ['IT', '互联网', '金融'];
@@ -21,35 +21,47 @@ export class StockFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.stockId = this.routeInfo.snapshot.params['id'];
-    this.stockId = Number(this.stockId);
-    if (this.stockId !== 0) {
-      console.log(this.stockId);
-      console.log(typeof this.stockId);
-      this.stock = this.stockService.getStockById(this.stockId);
-    } else {
-      this.stock = new Stock(0, '', 0, 0, '', []);
-
-    }
-    console.log(this.stock);
-
     // 创建表单数据
     const fb = new FormBuilder();
     this.formModel = fb.group(
       {
-        name: [this.stock.name, [Validators.required, Validators.minLength(3)]],
-        price: [this.stock.price, [Validators.required]],
-        desc: [this.stock.desc],
+        name: ['', [Validators.required, Validators.minLength(3)]],
+        price: ['', [Validators.required]],
+        desc: [''],
         categories: fb.array([
-          new FormControl(this.stock.categories.indexOf(this.categories[0]) !== -1),
-          new FormControl(this.stock.categories.indexOf(this.categories[1]) !== -1),
-          new FormControl(this.stock.categories.indexOf(this.categories[2]) !== -1),
-
+          new FormControl(false),
+          new FormControl(false),
+          new FormControl(false),
         ])
-
-
       }
     );
+
+    this.stockId = this.routeInfo.snapshot.params['id'];
+    this.stockId = Number(this.stockId);
+
+    if (this.stockId !== 0) {
+      // console.log(this.stockId);
+      // console.log(typeof this.stockId);
+      this.stockService.getStockById(this.stockId).subscribe(
+        data => {
+          this.stock = data;
+          this.formModel.reset({
+            name: data.name,
+            price: data.price,
+            desc: data.desc,
+            rating: data.rating,
+            categories: [
+              data.categories.indexOf(this.categories[0]) !== -1,
+              data.categories.indexOf(this.categories[1]) !== -1,
+              data.categories.indexOf(this.categories[2]) !== -1,
+            ]
+          });
+          console.log(this.stock);
+        }
+      );
+    }
+
+
   }
 
   cancel() {
@@ -69,6 +81,6 @@ export class StockFormComponent implements OnInit {
     console.log(this.formModel.value);
     console.log(this.formModel.hasError);
     // console.log(this.stock.rating);
-    // this.router.navigateByUrl('/stock');
+    this.router.navigateByUrl('/stock');
   }
 }
