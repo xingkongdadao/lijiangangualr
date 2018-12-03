@@ -1,3 +1,10 @@
-<p>
-  dashboard works!
-</p>
+<div class="tp-wrapper">
+  <!--[@flipState]="flip"    加入触发器， 并赋值-->
+  <!--(click)="toggleFlip()"  事件改变触发器的赋值。从而触动触发器形成动画-->
+  <div class="tp-box" (click)="toggleFlip()" [@flipState]="flip">
+    <div class="tp-box__side tp-box__front">Tiếng Việt
+    </div>
+    <div class="tp-box__side tp-box__back">越南语
+    </div>
+  </div>
+</div>
