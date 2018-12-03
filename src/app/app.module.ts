@@ -17,6 +17,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { StockFilterPipe } from './stock/stock-filter.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {SocketService} from './header/socket.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const routeConfig: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -44,6 +45,7 @@ const routeConfig: Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(routeConfig)
   ],
   providers: [StockService, SocketService],
