@@ -18,11 +18,14 @@ import { StockFilterPipe } from './stock/stock-filter.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {SocketService} from './header/socket.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { WordmeansComponent } from './dictionary/wordmeans/wordmeans.component';
+import {WordmeansService} from './dictionary/wordmeans.service';
 
 const routeConfig: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'stock', component: StockManageComponent},
+  {path: 'wordmean', component: WordmeansComponent},
   {path: 'stock/:id', component: StockFormComponent}
 ];
 
@@ -39,6 +42,7 @@ const routeConfig: Routes = [
     DashboardComponent,
     StockFormComponent,
     StockFilterPipe,
+    WordmeansComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,7 @@ const routeConfig: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routeConfig)
   ],
-  providers: [StockService, SocketService],
+  providers: [StockService, SocketService, WordmeansService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

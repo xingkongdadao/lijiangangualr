@@ -12,11 +12,11 @@ export class HeaderComponent implements OnInit {
   constructor(public socketService: SocketService) { }
 
   ngOnInit() {
-    this.socketService.createObservableSocket('ws://localhost:8085')
-      .pipe(map(event => JSON.parse(event)))
-      .subscribe(
-        event => this.messageCount = event.messageCount
-      );
+    // this.socketService.createObservableSocket('ws://localhost:8085')
+    //   .pipe(map(event => JSON.parse(event)))
+    //   .subscribe(
+    //     event => this.messageCount = event.messageCount
+    //   );
   }
 
 }

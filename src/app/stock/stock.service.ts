@@ -7,18 +7,9 @@ import { map } from 'rxjs/operators';
 })
 export class StockService {
   private readonly URL = '/api/stock';
+  // private readonly URL = 'http://127.0.0.1:8000/3418fe84-fcfd-45f0-add2-e332c9ba63cd/v1/word_means';
   constructor(public httpClient: HttpClient) {
   }
-
-  // private stocks: Stock[] = [
-  //   new Stock(1, '第一支股票', 1.1, 3, '很好', ['IT', '互联网']),
-  //   new Stock(2, '第二支股票', 3.1, 5, '很好', ['IT', '互联网']),
-  //   new Stock(3, '第三支股票', 4.1, 4, '很好', ['IT', '互联网']),
-  //   new Stock(4, '第四支股票', 2.1, 1, '很好', ['IT', '互联网']),
-  //   new Stock(5, '第五支股票', 4.1, 2, '很好', ['IT', '互联网', '金融']),
-  //   new Stock(6, '第六支股票', 3.1, 3, '很好', ['IT', '互联网']),
-  //   new Stock(7, '第七支股票', 2.1, 4, '很好', ['IT', '互联网']),
-  // ];
 
   getStocks(): Observable<Stock[]> {
     return this.httpClient.get<Array<Stock>>(`${this.URL}`);
