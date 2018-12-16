@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {WordMean, WordmeansService} from '../wordmeans.service';
+import {WordMeans, WordmeansService} from '../wordmeans.service';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class WordmeansComponent implements OnInit {
 
-  private word_means: Observable<WordMean[]>;
+  public word_means: Observable<WordMeans[]>;
   constructor(public WordMeansService: WordmeansService) {
     // console.log(this.WordMeansService.getWordMeans());
   }
@@ -22,7 +22,7 @@ export class WordmeansComponent implements OnInit {
   create() {
   }
 
-  update(word_mean: WordMean) {
+  update(word_mean: WordMeans) {
   }
 
 

@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Menu} from '../../menu/menu.component';
 import {Router} from '@angular/router';
 import {Stock, StockService} from '../stock.service';
 import {FormControl} from '@angular/forms';
-import {debounceTime, subscribeOn} from 'rxjs/operators';
+import {debounceTime} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -12,9 +11,9 @@ import {Observable} from 'rxjs';
   styleUrls: ['./stock-manage.component.css']
 })
 export class StockManageComponent implements OnInit {
-  private stocks: Observable<Stock[]>;
-  private nameFilter: FormControl = new FormControl();
-  private keyword: string;
+  public stocks: Observable<Stock[]>;
+  public nameFilter: FormControl = new FormControl();
+  public keyword: string;
 
   constructor(public router: Router, public stockService: StockService) {
   }
