@@ -6,8 +6,8 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class WordmeansService {
-  // private readonly URL = 'http://127.0.0.1:8000/3418fe84-fcfd-45f0-add2-e332c9ba63cd/v1/word_means';
-  private readonly URL = '/3418fe84-fcfd-45f0-add2-e332c9ba63cd/v1/word_means';
+  // private readonly URL = 'http://panda.study/3418fe84-fcfd-45f0-add2-e332c9ba63cd/v1/word_means';
+  private readonly URL = '/lijiangapi/v1/word_means';
   constructor(public httpClient: HttpClient) {
   }
 

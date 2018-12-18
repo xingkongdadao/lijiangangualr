@@ -9,14 +9,18 @@ import {Observable} from 'rxjs';
 })
 export class WordmeansComponent implements OnInit {
 
-  public word_means: Observable<WordMeans[]>;
+  public word_means: WordMeans[];
   constructor(public WordMeansService: WordmeansService) {
     // console.log(this.WordMeansService.getWordMeans());
   }
 
   ngOnInit() {
-    this.word_means = this.WordMeansService.getWordMeans();
-
+    // this.word_means = this.WordMeansService.getWordMeans();
+    this.WordMeansService.getWordMeans()
+      .subscribe(data => {
+        console.log(data['results']);
+        this.word_means = data['results'];
+      });
   }
 
   create() {
