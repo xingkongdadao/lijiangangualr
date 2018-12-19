@@ -20,6 +20,8 @@ import {SocketService} from './header/socket.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { WordmeansComponent } from './dictionary/wordmeans/wordmeans.component';
 import {WordmeansService} from './dictionary/wordmeans.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const routeConfig: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -50,7 +52,8 @@ const routeConfig: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routeConfig)
+    RouterModule.forRoot(routeConfig),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [StockService, SocketService, WordmeansService],
   bootstrap: [AppComponent]
